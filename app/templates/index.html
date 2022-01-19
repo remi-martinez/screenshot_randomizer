@@ -1,0 +1,198 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="icon" href="https://i.imgur.com/yxtvzOp.png" type="image/png">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            $('.resultImg').hide()
+            setTimeout(function () {
+                $('.resultImg').show()
+                $('.spinner').css("opacity", "0")
+            }, 100)
+
+            $('.randomizeBtn').click(function () {
+                window.location.reload()
+            })
+        })
+    </script>
+    <title>Screenshot Finder</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Montserrat:600&display=swap');
+
+        body {
+            background-color: var(--dark);
+            text-align: center;
+        }
+
+        * {
+            color: var(--light)
+        }
+
+        span {
+            position: relative;
+            display: inline-flex;
+            width: 180px;
+            height: 55px;
+            margin: 0 15px;
+            perspective: 1000px;
+        }
+
+        span a {
+            font-size: 19px;
+            letter-spacing: 1px;
+            transform-style: preserve-3d;
+            transform: translateZ(-25px);
+            transition: transform .25s;
+            font-family: 'Montserrat', sans-serif;
+
+        }
+
+        span a:before,
+        span a:after {
+            position: absolute;
+            content: "RANDOMIZE !";
+            height: 55px;
+            width: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 5px solid #ff5368;
+            box-sizing: border-box;
+            border-radius: 5px;
+        }
+
+        span a:before {
+            color: #fff;
+            background: #ff5368;
+            transform: rotateY(0deg) translateZ(25px);
+        }
+
+        span a:after {
+            color: #fff;
+            transform: rotateX(90deg) translateZ(25px);
+        }
+
+        span a:hover {
+            transform: translateZ(-25px) rotateX(-90deg);
+        }
+
+        /********/
+
+        .loader {
+            font-size: 10px;
+            margin: 0;
+            text-indent: -9999em;
+            width: 11em;
+            height: 11em;
+            border-radius: 50%;
+            background: #ffffff;
+            background: -moz-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
+            background: -webkit-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
+            background: -o-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
+            background: -ms-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
+            background: linear-gradient(to right, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
+            position: relative;
+            -webkit-animation: load3 1.4s infinite linear;
+            animation: load3 1.4s infinite linear;
+            -webkit-transform: translateZ(0);
+            -ms-transform: translateZ(0);
+            transform: translateZ(0);
+        }
+
+        .loader:before {
+            width: 50%;
+            height: 50%;
+            background: #ffffff;
+            border-radius: 100% 0 0 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            content: '';
+        }
+
+        .loader:after {
+            background: var(--dark);
+            width: 75%;
+            height: 75%;
+            border-radius: 50%;
+            content: '';
+            margin: auto;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+        }
+
+        @-webkit-keyframes load3 {
+            0% {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+            100% {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes load3 {
+            0% {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+            100% {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+        }
+
+        .buttonContainer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        footer {
+            padding-left: 5px;
+            background-color: var(--dark);
+            position: fixed;
+            bottom: 5px;
+            right: 5px;
+        }
+
+        .githublink {
+            text-decoration: none;
+            color: #ff5368 !important;
+        }
+    </style>
+</head>
+<body>
+<img src="https://i.imgur.com/RVU1VUv.png" width="600px">
+<br/>
+<div class="buttonContainer">
+    <span class="randomizeBtn">
+        <a href=""></a>
+    </span>
+    <div class="spinner loader"></div>
+</div>
+<br/>
+
+<div class="result">
+    <img class="resultImg" src="{{ imgUrl }}" style="max-width: 90%">
+</div>
+
+<footer>&copy; 2022 - <a class="githublink" href="https://github.com/Diissolution/screenshot_randomizer">GitHub</a></footer>
+</body>
+</html>
