@@ -27,7 +27,9 @@ SECRET_KEY = '%fl9*pwkru_8s0l&n&qc9!nx^0w1q%lsw_p^b(ewgq%ma&!+63'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'screenshot-randomizer.herokuapp.com'
+]
 
 
 # Application definition
