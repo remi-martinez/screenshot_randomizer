@@ -1,8 +1,6 @@
 import string
 import random
 import re
-import os
-import html2text
 import cloudscraper
 from django import template
 
