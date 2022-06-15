@@ -17,16 +17,17 @@ def get_random_url():
 
     randomString = ''.join(random.choices(fullListStr, k=6))
     randomUrl = "https://prnt.sc/" + randomString
+    notFoundUrl = "https://i.imgur.com/removed.png"
 
     scraped = scrap_website(randomUrl)
 
     imgURLBrut = re.search(r'og:image" content=".*\.(jpg|jpeg|png|gif)"', scraped)
     if imgURLBrut is None:
-        return 'https://cdn.shopify.com/s/files/1/1061/1924/products/Sad_Face_Emoji_large.png?v=1571606037'
+        return notFoundUrl
     else:
         imgURLClean = re.search(r'http.*\.(jpg|jpeg|png|gif)', imgURLBrut.group(0))
 
     if imgURLClean is None:
-        return 'https://cdn.shopify.com/s/files/1/1061/1924/products/Sad_Face_Emoji_large.png?v=1571606037'
+        return notFoundUrl
     else:
         return imgURLClean.group(0)
